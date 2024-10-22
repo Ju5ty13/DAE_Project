@@ -1,4 +1,4 @@
-coolness = 50
+coolness = 100
 
 if coolness < 50:
     print("umm no aura points??")
