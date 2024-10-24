@@ -4,11 +4,10 @@ class Character:
         self.character_class = character_class
         self.level = 1
         self.experience = 0
-        self.attributes = {
-            'strength': 10,
-            'intelligence': 10,
-            'dexterity': 10
-        }
+        self.attributes = {'strength': 10,'intelligence': 10,'dexterity': 10}
+        print (self, name, character_class)
+        #Create character name, class, level, experience, & attributes.
+
     
     def level_up(self):
         self.level += 1
@@ -34,3 +33,4 @@ class Game:
 # Example usage
 game = Game()
 game.create_character("Thorin", "Warrior")
+
