@@ -1,58 +1,98 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using System;
 using System.Diagnostics;
 
-Console.WriteLine("What is my name?");
-string myname = "Justin";
-Console.WriteLine(myname);
-Console.WriteLine("What is my age?");
-int myage = 17;
-Console.WriteLine(myage);
-Console.WriteLine("whats a more accurate representation of my age?");
-float accurateage = 17.2f;
-Console.WriteLine(accurateage);
-Console.WriteLine("hmm im wondering what the weather is right now");
-
-bool isthundering = true;
-bool israining = false;
-bool iscloudy = false;
-
-if (isthundering)
-{Console.WriteLine("AHHHH NOO GET BACK INSIDE ITS THUNDERING1!!");}
-else if (israining)
-{Console.WriteLine("i like this hehehe");}
-else if (iscloudy)
-{Console.WriteLine("hmm this is okay");}
-
-int meowsmade = 0; 
-while (meowsmade < 10) 
+class Player
 {
-    Console.WriteLine ("THUNDER!");
-meowsmade++;}
-for (int click = 0; click < 20; click++)
-{
-Console.WriteLine ("AAAA ARE WE SAFE!?" + (click + 1));}
+    // Public variable (accessible from outside the class)
+    public int playerHealth;
 
-int Add(int a, int b)
-{
-    return a + b;
+    // Private variable (only accessible inside this class)
+    private string secretPower;
+
+    // Constructor to initialize the player
+    public Player(int health, string power)
+    {
+        playerHealth = health;
+        secretPower = power;
+    }
+
+    // Public method to access the private variable
+    public void RevealSecretPower()
+    {
+        Console.WriteLine($"Psst... my secret power is: {secretPower}");
+    }
 }
-int result = Add(10,10);
 
-Console.WriteLine(result);
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("What is my name?");
+        string myname = "Justin";
+        Console.WriteLine(myname);
 
-Console.WriteLine("okay i think we're safe.. thankfully");
+        Console.WriteLine("What is my age?");
+        int myage = 17;
+        Console.WriteLine(myage);
 
+        Console.WriteLine("What's a more accurate representation of my age?");
+        float accurateAge = 17.2f;
+        Console.WriteLine(accurateAge);
 
-// just tests, they dont work yet
-//public int playerHealth = 100;
-//private string secretpower = "Top secret super powers from lightning!";
-Console.WriteLine("i think i need a break from the outside, lets go get a drink at a vending machine");
+        Console.WriteLine("Hmm... I'm wondering what the weather is right now.");
 
+        bool isThundering = true;
+        bool isRaining = false;
+        bool isCloudy = false;
 
-int[] numbers = { 5, 10, 15, 20 };
+        if (isThundering)
+        {
+            Console.WriteLine("AHHHH NOO GET BACK INSIDE ITS THUNDERING!!");
+        }
+        else if (isRaining)
+        {
+            Console.WriteLine("I like this hehehe");
+        }
+        else if (isCloudy)
+        {
+            Console.WriteLine("Hmm, this is okay");
+        }
 
-Console. WriteLine (numbers[0]);
+        Console.WriteLine("OH NO! I think I just got struck by lightning!");
 
-List<string> friends = new List<string>(); // empty list
+        // Create a player object after getting struck by lightning
+        Player me = new Player(100, "Top secret superpowers from lightning!");
 
-friends. Add ("Charlie");
+        Console.WriteLine($"Am I okay? Checking health... {me.playerHealth} HP");
+        
+        Console.WriteLine("Wait... do I feel different?");
+        me.RevealSecretPower(); // Reveal the secret power
+
+        int meowsMade = 0;
+        while (meowsMade < 10)
+        {
+            Console.WriteLine("THUNDER!");
+            meowsMade++;
+        }
+
+        for (int click = 0; click < 20; click++)
+        {
+            Console.WriteLine("AAAA ARE WE SAFE!?" + (click + 1));
+        }
+
+        int Add(int a, int b)
+        {
+            return a + b;
+        }
+        int result = Add(10, 10);
+
+        Console.WriteLine(result);
+        Console.WriteLine("Okay, I think we're safe... thankfully.");
+
+        Console.WriteLine("I think I need a break from the outside. Let's go get a drink at a vending machine.");
+
+        int[] numbers = { 5, 10, 15, 20 };
+        Console.WriteLine(numbers[0]);
+    }
+}

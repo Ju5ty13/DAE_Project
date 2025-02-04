@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/student/Documents/JWDAEPROJECT/c#_1/c#_1.csproj": {}
+    "/Users/student/Documents/DAE_Project/c#_1/c#_1.csproj": {}
   },
   "projects": {
-    "/Users/student/Documents/JWDAEPROJECT/c#_1/c#_1.csproj": {
+    "/Users/student/Documents/DAE_Project/c#_1/c#_1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/student/Documents/JWDAEPROJECT/c#_1/c#_1.csproj",
+        "projectUniqueName": "/Users/student/Documents/DAE_Project/c#_1/c#_1.csproj",
         "projectName": "c#_1",
-        "projectPath": "/Users/student/Documents/JWDAEPROJECT/c#_1/c#_1.csproj",
+        "projectPath": "/Users/student/Documents/DAE_Project/c#_1/c#_1.csproj",
         "packagesPath": "/Users/student/.nuget/packages/",
-        "outputPath": "/Users/student/Documents/JWDAEPROJECT/c#_1/obj/",
+        "outputPath": "/Users/student/Documents/DAE_Project/c#_1/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/student/.nuget/NuGet/NuGet.Config"
