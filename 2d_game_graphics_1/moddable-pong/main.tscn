@@ -1,0 +1,74 @@
+[gd_scene load_steps=12 format=3 uid="uid://bel3lwsvc2uc3"]
+
+[ext_resource type="PackedScene" uid="uid://s7enbp56f256" path="res://components/paddles/basic_paddle.tscn" id="1_xxpg5"]
+[ext_resource type="Texture2D" uid="uid://1fcfep77mg20" path="res://assets/textures/spaces/galaxy_space.png" id="2_4vsh3"]
+[ext_resource type="PackedScene" uid="uid://cg1m4evi8c35o" path="res://components/other/spawner.tscn" id="3_spct4"]
+[ext_resource type="PackedScene" uid="uid://bn368pidqsqgs" path="res://rules_goals/game_logic.tscn" id="3_umelw"]
+[ext_resource type="PackedScene" uid="uid://bis7afjjuwypq" path="res://hud.tscn" id="4_4868o"]
+[ext_resource type="Texture2D" uid="uid://bemeakmfsoeyf" path="res://assets/textures/spaces/asteroid.png" id="4_k6a13"]
+[ext_resource type="PackedScene" uid="uid://cg8ibi18um3vg" path="res://spaces/basic_space.tscn" id="4_nvjpm"]
+[ext_resource type="PackedScene" uid="uid://c7l70grmkauij" path="res://components/balls/basic_ball.tscn" id="4_rffv2"]
+[ext_resource type="Texture2D" uid="uid://bo8lekmg37u44" path="res://assets/textures/paddles/basic_paddle_2.png" id="4_tisc8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_guyqd"]
+size = Vector2(10, 1080)
+
+[sub_resource type="SystemFont" id="SystemFont_24cl0"]
+
+[node name="Main" type="Node2D"]
+metadata/_edit_vertical_guides_ = [-933.0]
+
+[node name="BasicSpace" parent="." instance=ExtResource("4_nvjpm")]
+background_texture = ExtResource("2_4vsh3")
+
+[node name="BasicPaddleLeft" parent="." instance=ExtResource("1_xxpg5")]
+position = Vector2(172, 540)
+texture = ExtResource("4_tisc8")
+tint = Color(0.941176, 0.184314, 0.141176, 1)
+
+[node name="BasicPaddleRight" parent="." instance=ExtResource("1_xxpg5")]
+position = Vector2(1752, 540)
+player = 1
+texture = ExtResource("4_tisc8")
+tint = Color(0.939885, 0.184426, 0.142933, 1)
+
+[node name="BallSpawner" parent="." groups=["ball spawners"] instance=ExtResource("3_spct4")]
+position = Vector2(967, 531)
+spawn_area = SubResource("RectangleShape2D_guyqd")
+life_time = 0.0
+
+[node name="BasicBall" parent="BallSpawner" instance=ExtResource("4_rffv2")]
+position = Vector2(13, 8)
+linear_velocity = Vector2(353.553, 353.553)
+size = 0.5
+texture = ExtResource("4_k6a13")
+tint = Color(0.796012, 0.803428, 0.814725, 1)
+
+[node name="BallSpawner2" parent="." groups=["ball spawners"] instance=ExtResource("3_spct4")]
+position = Vector2(967, 531)
+spawn_area = SubResource("RectangleShape2D_guyqd")
+life_time = 0.0
+
+[node name="BasicBall" parent="BallSpawner2" instance=ExtResource("4_rffv2")]
+position = Vector2(252, 229)
+linear_velocity = Vector2(353.553, 353.553)
+size = 0.5
+texture = ExtResource("4_k6a13")
+tint = Color(0.796012, 0.803428, 0.814725, 1)
+
+[node name="BallSpawner3" parent="." groups=["ball spawners"] instance=ExtResource("3_spct4")]
+position = Vector2(967, 531)
+spawn_area = SubResource("RectangleShape2D_guyqd")
+life_time = 0.0
+
+[node name="BasicBall" parent="BallSpawner3" instance=ExtResource("4_rffv2")]
+position = Vector2(252, 229)
+linear_velocity = Vector2(353.553, 353.553)
+size = 0.5
+texture = ExtResource("4_k6a13")
+tint = Color(0.796012, 0.803428, 0.814725, 1)
+
+[node name="GameLogic" parent="." instance=ExtResource("3_umelw")]
+
+[node name="HUD" parent="." instance=ExtResource("4_4868o")]
+font = SubResource("SystemFont_24cl0")
