@@ -1,32 +1,48 @@
 extends Node2D
 
-# constant reference to player
+# Constant reference to player
 var player: Player
 
-# called when the sword node is first loaded
+@onready var anim := $AnimationPlayer  # Reference to AnimationPlayer
+@onready var sprite := $Sprite2D        # Reference to the Sprite2D node
+
+# Offset for sword's position (adjust this based on where you want it on the player)
+var sword_offset := Vector2(2, 0)  # Adjust to match the correct position relative to the player
+
+# Called when the sword node is first loaded
 func _ready():
-	var parents := get_tree().get_nodes_in_group("player")
-	player = parents[0]
+	# Get the parent node, and assign it to the "player" variable if it is a "Player" node
+	var parent := get_parent()
+	if parent is Player:
+		player = parent
+	else:
+		print("Warning: Sword is not attached to Player!")
 
-	get_parent().remove_child(self)
-	player.add_child(self)
+# Function to play the sword swing animation
+func swing():
+	anim.play("swing")  # Plays the animation named "swing"
 
-# called every frame (_delta is the time since last frame)
+# Called every frame (_delta is the time since last frame)
 func _process(_delta: float):
-	# setting the horizontal scale to a negative number will "invert" the node horiozntally.
-	# we use this to flip the sword to face right or left
-	
-	# if the player's horizontal velocity (x) is greater than x (moving right)
-	if player.velocity.x > 0:
-		scale.x = 1
-	# if the player's horizontal velocity (x) is less than x (moving left)
-	elif player.velocity.x < 0:
-		scale.x = -1
+	if player == null:
+		print("Warning: Sword has no player assigned!")
+		return  # Prevent error
 
-# this function is called whenever a body enters into the area2d
-# "body: Node2D" is a reference to the interacted body
-func _on_area_2d_body_entered(body:Node2D):
-	# checks if the body entered is a Player type node
-	if body is Goober:
-		# emits signal from player to "stomp" body/goober
+	# The sword is a child of the player, so we don't need to manually set its position.
+	# Instead, we adjust the sword's local position using sword_offset.
+	position = sword_offset  # The sword's position is now offset relative to the player’s position
+
+	# Flip the sword based on the player's velocity (moving right or left)
+	if player.velocity.x > 0:
+		scale.x = 1  # Sword faces right
+	elif player.velocity.x < 0:
+		scale.x = -1  # Sword faces left
+
+	# Check if the player presses the "E" key to swing the sword
+	if Input.is_action_just_pressed("swing_sword"):
+		swing()
+
+# Called when a body enters the Area2D
+func _on_area_2d_body_entered(body: Node2D):
+	if body is Goober and player != null:
 		player.stomped.emit(body)
