@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bmackcjovhcxj"]
+
+[ext_resource type="Script" uid="uid://duw5k7rwbpdvg" path="res://scripts/ability_unlocker.gd" id="1_hxqge"]
+[ext_resource type="Texture2D" uid="uid://d0bxr0k0t4j2m" path="res://assets/brackeys_platformer_assets/sprites/fruit.png" id="2_4fjen"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cjk8n"]
+
+[node name="AbilityUnlocker" type="Area2D" groups=["ability_unlocker"]]
+collision_mask = 2
+script = ExtResource("1_hxqge")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cjk8n")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3.57628e-07, 4.76837e-07)
+scale = Vector2(1.17647, 1.17647)
+texture = ExtResource("2_4fjen")
+region_enabled = true
+region_rect = Rect2(0, 0, 17, 17)
